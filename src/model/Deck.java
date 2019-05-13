@@ -22,6 +22,6 @@ public class Deck {
 
 
     public void returnCard(Card card){
-
+        deck.add(card);
     }
 }
