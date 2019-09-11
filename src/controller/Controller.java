@@ -48,8 +48,9 @@ public class Controller implements Initializable {
     //Back of card
     static Image cb = new Image("view/Images/cardBack.jpg");
     static Image j = new Image("view/Images/joker.jpg");
-    static Image q = new Image("view/Images/king.png");
-    static Image k = new Image("view/Images/queen.png");
+    static Image q = new Image("view/Images/queen.png");
+    static Image k = new Image("view/Images/king.png");
+
     //Card Image View
     static ImageView ivcb = new ImageView(cb);
     static ImageView ivj = new ImageView(j);
@@ -67,7 +68,7 @@ public class Controller implements Initializable {
     static Group textGroup = new Group();
     static Group cardGroup = new Group();
     static Label play = new Label("Play");
-    static Label cont = new Label("Continue");
+    static Label cont = new Label("Rules");
     static Label exit = new Label ("Exit");
     //Rotate transforms for the left and right animated cards in the header
     static Rotate jRotate = new Rotate(0);
@@ -93,7 +94,7 @@ public class Controller implements Initializable {
             double pivotY = 150+(height-sceneHeight)*0.4;
 
 
-            Rotate rotation = new Rotate(rotate,0,pivotY);
+            Rotate rotation = new Rotate(rotate,10,pivotY);
             text.getTransforms().add(rotation);
 
             textGroup.getChildren().add(text);
@@ -273,6 +274,10 @@ public class Controller implements Initializable {
         //Set exit label to end application
         exit.setOnMouseClicked(event ->{
             Platform.exit();
+        });
+        //Set rules label to clear root
+        cont.setOnMouseClicked(event -> {
+            root.getChildren().clear();
         });
 
 

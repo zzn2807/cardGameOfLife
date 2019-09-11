@@ -24,4 +24,15 @@ public class Deck {
     public void returnCard(Card card){
         deck.add(card);
     }
+
+    public Card pickStackCard(){
+        Card picked = deck.get(new Random().nextInt(deck.size()));
+        boolean valid = (picked.getValue()!=1 && picked.getValue()!=2 && picked.getValue()!=5 && picked.getValue()!=11 && picked.getValue()!=20);
+        while(!valid){
+            this.returnCard(picked);
+            picked = this.pickCard();
+            valid = (picked.getValue()!=1 && picked.getValue()!=2 && picked.getValue()!=5 && picked.getValue()!=11 && picked.getValue()!=20);
+        }
+        return picked;
+    }
 }
