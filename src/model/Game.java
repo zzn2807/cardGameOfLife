@@ -8,6 +8,7 @@ public class Game {
     private Stack stack;
     private int currentPlayer;
     private Boolean isOver;
+    private Boolean moveMade;
 
     public Game(int playerNo){
         isOver = false;
@@ -23,5 +24,18 @@ public class Game {
 
     public Player getCurrentPlayer() {
         return players.get(currentPlayer);
+    }
+
+    public void startGame(){
+        while(!isOver){
+            while (!moveMade){
+
+            }
+            moveMade = false;
+            currentPlayer = (currentPlayer++)%players.size();
+            if(stack.getStackSize()>=10){
+                stack.emptyStack(deck);
+            }
+        }
     }
 }

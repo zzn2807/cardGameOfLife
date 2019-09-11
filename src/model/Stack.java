@@ -1,27 +1,30 @@
 package model;
+
+import java.util.ArrayList;
+
 /* Class to represent the stack of played cards*/
 public class Stack {
-    StackNode previous;
-    Card top;
+    private ArrayList<Card> cards;
 
-    public Stack (Card card){
-        previous= null;
-        top = card;
+    public Stack(Card card){
+        cards = new ArrayList<>();
+        cards.add(card);
     }
 
-    public void setPrevious(StackNode previous) {
-        this.previous = previous;
+    public void emptyStack(Deck deck){
+        for(int i = 0; i<cards.size()-1;i++){
+            deck.returnCard(cards.get(i));
+        }
+        Card top = cards.get(cards.size()-1);
+        cards = new ArrayList<>();
+        cards.add(top);
     }
 
-    public void placeCard(Card card){
-        StackNode newPrevious = new StackNode(top);
-        newPrevious.setPrevious(previous);
-        previous=newPrevious;
-        top = card;
+    public int getStackSize(){
+        return cards.size();
     }
 
-    @Override
-    public String toString() {
-        return top.toString()+ ", " + previous.toString();
+    public Card getTop(){
+        return cards.get(cards.size()-1);
     }
 }

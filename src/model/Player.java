@@ -15,5 +15,9 @@ public class Player {
         }
     }
 
+    public void makeMove(Card stackTop){
+
+    }
+
 
 }
