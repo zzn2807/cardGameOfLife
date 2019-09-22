@@ -303,6 +303,12 @@ public class FrontPageController{
         exit.setFont(Font.font(bodyFontFrac*sceneHeight));
 
 
+
+        exit.setOnMouseClicked(event -> {
+            Platform.exit();
+        });
+
+
     }
 
     public void scale(double height){

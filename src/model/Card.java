@@ -74,6 +74,10 @@ public class Card {
         return value;
     }
 
+    public Shape getShape() {
+        return shape;
+    }
+
     @Override
     public String toString() {
         return type+" of "+shape;
