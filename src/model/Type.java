@@ -4,7 +4,7 @@ public enum Type {
     JOKER,
     KING,
     QUEEN,
-    JESTER,
+    JACK,
     TEN,
     NINE,
     EIGHT,

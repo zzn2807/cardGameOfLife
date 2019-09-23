@@ -371,11 +371,11 @@ public class FrontPageController{
     public void selectPlayerNumber(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayerNumberSelector.fxml"));
         Parent root = loader.load();
-        PlayerNumberSelectorController gpc = (PlayerNumberSelectorController)loader.getController();
+        PlayerNumberSelectorController pns = (PlayerNumberSelectorController)loader.getController();
         Scene scene = new Scene(root,stage.getScene().getWidth(),stage.getScene().getHeight());
-        scene.getStylesheets().add("view/Stylesheets/GamePageStyle.css");
+        scene.getStylesheets().add("view/Stylesheets/PlayerNumberSelectorStyle.css");
         stage.setScene(scene);
-        gpc.setup(stage);
+        pns.setup(stage);
     }
 
 }

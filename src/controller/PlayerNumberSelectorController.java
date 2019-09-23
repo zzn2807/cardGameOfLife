@@ -1,8 +1,11 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -12,6 +15,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -142,6 +146,36 @@ public class PlayerNumberSelectorController {
             fiveP.setEffect(null);
         });
 
+        //Set mouse click for player numbers
+        twoP.setOnMouseClicked(event -> {
+            try {
+                startGame(stage,2);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        threeP.setOnMouseClicked(event -> {
+            try {
+                startGame(stage,3);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        fourP.setOnMouseClicked(event -> {
+            try {
+                startGame(stage,4);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        fiveP.setOnMouseClicked(event -> {
+            try {
+                startGame(stage,5);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
     }
 
     public void scale(double sceneHeight){
@@ -164,5 +198,15 @@ public class PlayerNumberSelectorController {
 
         numSelector.setSpacing(bodySpacingFrac*sceneHeight);
 
+    }
+
+    public void startGame(Stage stage, int numOfPlayers) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GamePage.fxml"));
+        Parent root = loader.load();
+        GamePageController gpc = (GamePageController) loader.getController();
+        Scene scene = new Scene(root,stage.getScene().getWidth(),stage.getScene().getHeight());
+        scene.getStylesheets().add("view/Stylesheets/PlayerNumberSelectorStyle.css");
+        stage.setScene(scene);
+        gpc.startGame(stage,numOfPlayers);
     }
 }

@@ -27,5 +27,7 @@ public class Player {
                                 &&(stackCard.getValue()!=20));
     }
 
-
+    public ArrayList<Card> getHand() {
+        return hand;
+    }
 }

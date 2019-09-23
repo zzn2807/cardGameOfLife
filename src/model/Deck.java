@@ -7,6 +7,7 @@ public class Deck {
     private ArrayList<Card> deck;
 
     public Deck(){
+        deck = new ArrayList<>();
         for (Shape shape: Shape.values()){
             for(Type type: Type.values()){
                 deck.add(new Card(shape,type));

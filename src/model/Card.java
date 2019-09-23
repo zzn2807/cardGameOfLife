@@ -51,7 +51,7 @@ public class Card {
                 value=10;
                 break;
 
-            case JESTER:
+            case JACK:
                 value=11;
                 break;
 
@@ -80,7 +80,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return type+" of "+shape;
+        return shape.toString().toLowerCase()+"_"+type.toString().toLowerCase();
     }
 
     @Override

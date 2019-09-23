@@ -16,7 +16,7 @@ public class Game {
         players = new ArrayList<>();
         deck = new Deck();
         for(int i = 0; i<playerNo; i++){
-            Player player = new Player(deck,(52-52%playerNo)/playerNo);
+            Player player = new Player(deck,(21-21%playerNo)/playerNo);
             players.add(player);
         }
         stack = new Stack(deck.pickStackCard());
@@ -41,5 +41,9 @@ public class Game {
 
     public void setMoveMade(){
         moveMade = true;
+    }
+
+    public Card getStackTop(){
+        return stack.getTop();
     }
 }
