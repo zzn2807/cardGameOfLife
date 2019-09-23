@@ -38,4 +38,8 @@ public class Game {
             }
         }
     }
+
+    public void setMoveMade(){
+        moveMade = true;
+    }
 }

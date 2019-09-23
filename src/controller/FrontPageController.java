@@ -1,7 +1,5 @@
 package controller;
 
-import com.sun.javafx.tk.FontLoader;
-import com.sun.javafx.tk.Toolkit;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -9,31 +7,24 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
-import javafx.scene.transform.Transform;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class FrontPageController{
 
@@ -46,11 +37,11 @@ public class FrontPageController{
     //Fraction of the scene height that the header is contained within
     public static double headerFrac = 0.4;
     //Fraction of the scene height that the strip is contained within
-    public static double stripFrac = 0.03;
+    public static double stripFrac = 0.015;
     //Fraction of the scene height that the footer is contained within
     public static double footerFrac = stripFrac;
     //Fraction of the scene height that the card menu is contained within
-    public static double cardFrac = 0.54;
+    public static double cardFrac = 0.57;
 
 
     //Fraction of the scene that the animated cards are contained within the header
@@ -136,7 +127,7 @@ public class FrontPageController{
 
         //Set Background Color of header, strip and footer
         header.setBackground(new Background(new BackgroundFill(Paint.valueOf("#002640"),null,null)));
-        strip.setBackground(new Background(new BackgroundFill(Paint.valueOf("#222222"),null,null)));
+        strip.setBackground(new Background(new BackgroundFill(Paint.valueOf("#333333"),null,null)));
         footer.setBackground(new Background(new BackgroundFill(Paint.valueOf("#002640"),null,null)));
 
         //Rotation animation for the jack card. Rotates left, pauses for half a second, rotates to the other side, pauses again, returns to center
@@ -260,7 +251,7 @@ public class FrontPageController{
 
 
 
-        //Create drop shadow effect for hovering over menu labels
+        //Create drop shadow effect for hovering over menu texts
         DropShadow ds = new DropShadow();
         ds.setRadius(10);
         ds.setColor(Color.valueOf("#8c4544"));
@@ -303,6 +294,13 @@ public class FrontPageController{
         exit.setFont(Font.font(bodyFontFrac*sceneHeight));
 
 
+        play.setOnMouseClicked(event -> {
+            try {
+                selectPlayerNumber(stage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
         exit.setOnMouseClicked(event -> {
             Platform.exit();
@@ -368,6 +366,16 @@ public class FrontPageController{
         rules.getStyleClass().add("body-text");
         exit.getStyleClass().add("body-text");
 
+    }
+
+    public void selectPlayerNumber(Stage stage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayerNumberSelector.fxml"));
+        Parent root = loader.load();
+        PlayerNumberSelectorController gpc = (PlayerNumberSelectorController)loader.getController();
+        Scene scene = new Scene(root,stage.getScene().getWidth(),stage.getScene().getHeight());
+        scene.getStylesheets().add("view/Stylesheets/GamePageStyle.css");
+        stage.setScene(scene);
+        gpc.setup(stage);
     }
 
 }

@@ -15,8 +15,16 @@ public class Player {
         }
     }
 
-    public void makeMove(Card stackTop){
+    public void makeMove(Game game){
+        game.setMoveMade();
+    }
 
+    public boolean hasWon(Card stackCard){
+        return ((hand.size()==0)&&(stackCard.getValue()!=1)
+                                &&(stackCard.getValue()!=2)
+                                &&(stackCard.getValue()!=5)
+                                &&(stackCard.getValue()!=11)
+                                &&(stackCard.getValue()!=20));
     }
 
 

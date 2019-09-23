@@ -82,4 +82,10 @@ public class Card {
     public String toString() {
         return type+" of "+shape;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Card other = (Card)obj;
+        return ((this.shape==other.shape)&&(this.value==other.value));
+    }
 }
