@@ -1,0 +1,19 @@
+@font-face{
+    src: url('../Fonts/Jocker_Extrude_Right.ttf');
+}
+
+@font-face{
+    src: url('../Fonts/Swistblnk_Moalang_Melintang.ttf');
+}
+
+.header{
+    -fx-font-family: "Swistblnk Moalang Melintang";
+    -fx-fill: white;
+}
+
+.body{
+    -fx-font-family: "Jocker Free Extrude Right";
+    -fx-fill: black;
+    -fx-stroke: black;
+    -fx-stroke-width: 2px;
+}

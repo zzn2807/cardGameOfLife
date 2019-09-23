@@ -205,7 +205,7 @@ public class PlayerNumberSelectorController {
         Parent root = loader.load();
         GamePageController gpc = (GamePageController) loader.getController();
         Scene scene = new Scene(root,stage.getScene().getWidth(),stage.getScene().getHeight());
-        scene.getStylesheets().add("view/Stylesheets/PlayerNumberSelectorStyle.css");
+        scene.getStylesheets().add("view/Stylesheets/GamePageStyle.css");
         stage.setScene(scene);
         gpc.startGame(stage,numOfPlayers);
     }
