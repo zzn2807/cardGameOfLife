@@ -46,4 +46,8 @@ public class Game {
     public Card getStackTop(){
         return stack.getTop();
     }
+
+    public Card pickCard(){
+        return deck.pickCard();
+    }
 }

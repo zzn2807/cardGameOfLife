@@ -9,10 +9,21 @@ public class Deck {
     public Deck(){
         deck = new ArrayList<>();
         for (Shape shape: Shape.values()){
-            for(Type type: Type.values()){
-                deck.add(new Card(shape,type));
+            if(shape==Shape.JOKER1||shape==Shape.JOKER2){
+                continue;
+            }
+            else {
+                for (Type type : Type.values()) {
+                    if (type == Type.JOKER) {
+                        continue;
+                    } else {
+                        deck.add(new Card(shape, type));
+                    }
+                }
             }
         }
+        deck.add(new Card(Shape.JOKER1,Type.JOKER));
+        deck.add(new Card(Shape.JOKER2,Type.JOKER));
     }
 
     public Card pickCard(){

@@ -30,4 +30,8 @@ public class Player {
     public ArrayList<Card> getHand() {
         return hand;
     }
+
+    public void addCard(Card card){
+        hand.add(card);
+    }
 }
